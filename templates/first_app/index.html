@@ -4,10 +4,28 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
-        <title>Premiere App</title>
+        <title>Django deuxieme niveau</title>
     </head>
     <body>
-        <h1>Ici, c'est le parc du café!</h1>
-        <img src="{%  static "images/park.jpg" %}" alt="Hmm ce n'est funcionne pas =(">
+        <h1>Salut et bienvenue au Django niveau deux</h1>
+        <h2>Voici tes enregistrements</h2>
+        <div class="djangoTwo">
+            {% if access_records %}
+            <table>
+                <thead>
+                    <th>Site name</th>
+                    <th>Date accessed</th>
+                </thead>
+                {% for acc in access_records %}
+                <tr>
+                    <td>{{ acc.name }}</td>
+                    <td>{{ acc.date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>Il n'y a pas des enregistrements</p>
+            {% endif %}
+        </div>
     </body>
 </html>
