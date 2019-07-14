@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
-        <title>Django deuxieme niveau</title>
-    </head>
-    <body>
-        <h1>Salut et bienvenue au Django niveau deux</h1>
-        <h2>Voici tes enregistrements</h2>
-        <div class="djangoTwo">
-            {% if access_records %}
-            <table>
+<head>
+    <meta charset="utf-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/journal/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ciphE0NCAlD2/N6NUApXAN2dAs/vcSAOTzyE202jJx3oS8n4tAQezRgnlHqcJ59C" crossorigin="anonymous">
+    <title>Django deuxieme niveau</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <header>
+            <h1>Salut et bienvenue au Django niveau deux</h1>
+            <h2>Voici tes enregistrements</h2>
+        </header>
+    </div>
+    <div class="djangoTwo">
+        {% if access_records %}
+            <table class="table table-hover">
                 <thead>
-                    <th>Site name</th>
-                    <th>Date accessed</th>
+                <th>Nom du site</th>
+                <th>Date d'accès</th>
                 </thead>
                 {% for acc in access_records %}
-                <tr>
-                    <td>{{ acc.name }}</td>
-                    <td>{{ acc.date }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ acc.name }}</td>
+                        <td>{{ acc.date }}</td>
+                    </tr>
                 {% endfor %}
             </table>
-            {% else %}
+        {% else %}
             <p>Il n'y a pas des enregistrements</p>
-            {% endif %}
-        </div>
-    </body>
+        {% endif %}
+    </div>
+</div>
+
+</body>
 </html>
